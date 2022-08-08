@@ -152,3 +152,41 @@ while True:
                     saved_passwd_value.append(val)
             except:
                 pass
+
+
+    # show the modes
+    print("**************************************************")
+    time.sleep(0.15)
+    print("[N] Input New Password")
+    time.sleep(0.15)
+    print("[A] Show All Passwords")
+    time.sleep(0.15)
+    print("[F] Find Password")
+    time.sleep(0.15)
+    print("[P] Set Password")
+    time.sleep(0.15)
+    print("[I] Information")
+    time.sleep(0.15)
+    print("[R] Remove")
+    time.sleep(0.15)
+    print("[E] Edit")
+    time.sleep(0.15)
+    print("[H] Help")
+    time.sleep(0.15)
+    print("[Q] Quit")
+    time.sleep(0.15)
+    time.sleep(0.3)
+
+    cond_for_work = input(">>> ") # get input for choose a mode
+
+    # if user input a undefined  command
+    if cond_for_work not in commands_list:
+        print("**********")
+        time.sleep(0.15)
+        print(f'There is no "{cond_for_work}" command.')
+        time.sleep(0.15)
+        print("**********")
+        time.sleep(0.15)
+        print("You can use This commands:")
+        time.sleep(0.15)
+        print("**********")
