@@ -190,3 +190,129 @@ while True:
         print("You can use This commands:")
         time.sleep(0.15)
         print("**********")
+
+
+    # condition for choose N_Mode
+    if cond_for_work in ["N", "n"]:
+        file_mode = "a"
+        print("**************************************************")
+        time.sleep(0.15)
+        print("Please Enter the Name of Password")
+        time.sleep(0.15)
+        input_passwd_name = input(">>> ") # get name of password name of user
+        time.sleep(0.15)
+        print("**************************************************")
+        time.sleep(0.15)
+        # check if user input name in saved_passwd_name
+        while input_passwd_name in saved_passwd_name :
+            print("**********")
+            time.sleep(0.15)
+            print("This name is used before")
+            time.sleep(0.15)
+            print("**********")
+            time.sleep(0.15)
+            print("This names are used before : ")
+            time.sleep(0.15)
+            print("**********")
+            time.sleep(0.15)
+            # loop to show the all password names
+            for n in saved_passwd_name:
+                print(n)
+                time.sleep(0.15)
+                print("**********")
+                time.sleep(0.15)
+            print("**************************************************")
+            time.sleep(0.15)
+            print("Please Enter the Name of Password")
+            time.sleep(0.15)
+            input_passwd_name = input(">>> ") # get the user input for new name for the password
+            time.sleep(0.15)
+            print("**************************************************")
+            time.sleep(0.15)
+            # check (for break the loop)
+            if input_passwd_name not in saved_passwd_name:
+                break
+
+        # check if ":" in user input name of password do not use that
+        while ":" in input_passwd_name:
+            print('Please enter the password name without ":"')
+            time.sleep(0.15)
+            input_passwd_name = input(">>> ") # get user input again for name of password
+            # check if user input name in saved_passwd_name
+            while input_passwd_name in saved_passwd_name :
+                print("**********")
+                time.sleep(0.15)
+                print("This name is used before")
+                time.sleep(0.15)
+                print("**********")
+                time.sleep(0.15)
+                print("This names are used before : ")
+                time.sleep(0.15)
+                print("**********")
+                time.sleep(0.15)
+                # loop to show the all password names
+                for n in saved_passwd_name:
+                    print(n)
+                    time.sleep(0.15)
+                    print("**********")
+                    time.sleep(0.15)
+                print("**************************************************")
+                time.sleep(0.15)
+                print("Please Enter the Name of Password")
+                time.sleep(0.15)
+                input_passwd_name = input(">>> ") # get the user input for new name for the password
+                time.sleep(0.15)
+                print("**************************************************")
+                time.sleep(0.15)
+                # check for break the loop
+                if input_passwd_name not in saved_passwd_name:
+                    break
+            # check for break the loop
+            if ":" not in input_passwd_name:
+                break
+
+        # check if length of user input name be equal 0
+        while len(input_passwd_name) == 0:
+            print("The password name can not be empty")
+            time.sleep(0.15)
+            input_passwd_name = input(">>> ") # get passwod again
+            # check if ":" in user input name of password do not use that
+            while ":" in input_passwd_name:
+                print('Please enter the password name without ":"')
+                time.sleep(0.15)
+                input_passwd_name = input(">>> ") # get user input again for name of password
+                # check if user input name in saved_passwd_name
+                while input_passwd_name in saved_passwd_name :
+                    print("**********")
+                    time.sleep(0.15)
+                    print("This name is used before")
+                    time.sleep(0.15)
+                    print("**********")
+                    time.sleep(0.15)
+                    print("This names are used before : ")
+                    time.sleep(0.15)
+                    print("**********")
+                    time.sleep(0.15)
+                    # loop to show the all password names
+                    for n in saved_passwd_name:
+                        print(n)
+                        time.sleep(0.15)
+                        print("**********")
+                        time.sleep(0.15)
+                    print("**************************************************")
+                    time.sleep(0.15)
+                    print("Please Enter the Name of Password")
+                    time.sleep(0.15)
+                    input_passwd_name = input(">>> ")  # get the user input for new name for the password
+                    time.sleep(0.15)
+                    print("**************************************************")
+                    time.sleep(0.15)
+                    # check (for break the loop)
+                    if input_passwd_name not in saved_passwd_name:
+                        break
+                # check (for break the loop)
+                if ":" not in input_passwd_name:
+                    break
+            # check (for break the loop)
+            if len(input_passwd_name) != 0:
+                break
