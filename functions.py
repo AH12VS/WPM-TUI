@@ -220,6 +220,23 @@ class A_Mode():
     def __init__(self):
         pass
 
+    def a_method(self, saved_passwd):
+        print("**************************************************")
+        time.sleep(0.15)
+        print("**********")
+        time.sleep(0.15)
+        if len(saved_passwd) == 0:
+            print("There is no password found")
+            time.sleep(0.15)
+            print("**********")
+            time.sleep(0.15)
+        for passwd in saved_passwd:
+            if len(passwd) > 0:
+                print(passwd)
+                time.sleep(0.15)
+                print("**********")
+                time.sleep(0.15)
+
 class F_Mode():
     def __init__(self):
         pass

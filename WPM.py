@@ -23,7 +23,6 @@ e_mode_functions_obj = functions.E_Mode()
 # list of commands
 commands_list = ["N", "n", "A", "a", "F", "f", "P", "p", "I", "i", "R", "r", "E", "e", "H", "h", "Q", "q"]
 
-# parameters
 numbers = string.digits
 lowercase_letters = string.ascii_lowercase
 uppercase_letters = string.ascii_uppercase
@@ -31,3 +30,20 @@ symbols = string.punctuation
 symbols = symbols.replace(":", "")
 characters = lowercase_letters+uppercase_letters
 all = numbers+lowercase_letters+uppercase_letters+symbols
+
+
+user_workspace_dir = os.path.expanduser("~") # get user workspace directory
+
+user_passwd = list() # save all password with name
+
+# condition for make the folder
+if os.path.exists(f"{user_workspace_dir}/Documents") == False:
+    os.mkdir(f"{user_workspace_dir}/Documents")
+if os.path.exists(f"{user_workspace_dir}/Documents/WPM/") == False:
+    os.mkdir(f"{user_workspace_dir}/Documents/WPM/")
+
+# condition for make or read passwd_user file
+if "passwd_user" not in os.listdir(f"{user_workspace_dir}/Documents/WPM/"):
+    usr_passwd_file = "w" # for make file
+if "passwd_user" in os.listdir(f"{user_workspace_dir}/Documents/WPM/"):
+    usr_passwd_file = "r" # for read file
