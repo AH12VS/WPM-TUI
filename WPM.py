@@ -372,3 +372,26 @@ while True:
 
                     if passwd_len > 3 and passwd_len < 61:
                         break
+
+        if cond_for_select_mk_passwd in ["A", "a"]:
+            passwd = n_mode_functions_obj.a_method(all, passwd_len, saved_passwd_value)
+
+        if cond_for_select_mk_passwd in ["N", "n"]:
+            passwd = n_mode_functions_obj.n_method(numbers, passwd_len, saved_passwd_value)
+
+        if cond_for_select_mk_passwd in ["C", "c"]:
+            passwd = n_mode_functions_obj.c_method(characters, passwd_len, saved_passwd_value)
+
+        if cond_for_select_mk_passwd in ["S", "s"]:
+            passwd = n_mode_functions_obj.s_method(symbols, passwd_len, saved_passwd_value)
+
+        if cond_for_select_mk_passwd in ["M", "m"]:
+            passwd = n_mode_functions_obj.m_method(all, saved_passwd_value)
+
+        print(f"{input_passwd_name}:{passwd}") # show the name of password and password
+
+        # save the file
+        with open(f"{user_workspace_dir}/Documents/WPM/passwd_data", file_mode) as f:
+            code_to_bin = ced_inh_obj.normal_to_bin(f"{input_passwd_name}:{passwd}") # code the password name and password value
+            f.write(code_to_bin)
+            f.write("\n")
