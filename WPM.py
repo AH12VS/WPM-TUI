@@ -62,3 +62,14 @@ if usr_passwd_file == "r":
 if usr_passwd_file == "w":
     with open(f"{user_workspace_dir}/Documents/WPM//passwd_user", usr_passwd_file) as p_f:
         pass
+
+if len(user_passwd) == 1: # check if length of user_passwd not equal 0 (be any data in that)
+    print("Please enter your password")
+    time.sleep(0.3)
+    user_passwd_for_login = input(">>> ") # get the input of user for open the software
+    while user_passwd_for_login != user_passwd[0]: # loop work if user input not equal the real and true password
+        print(f'The "{user_passwd_for_login} is incorrect"')
+        time.sleep(0.15)
+        print("Please enter your password")
+        time.sleep(0.3)
+        user_passwd_for_login = input(">>> ")
