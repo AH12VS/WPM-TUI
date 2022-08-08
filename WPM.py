@@ -316,3 +316,59 @@ while True:
             # check (for break the loop)
             if len(input_passwd_name) != 0:
                 break
+
+        # show the methods of N_Mode
+        time.sleep(0.15)
+        print("Please select mode (default : A):")
+        time.sleep(0.15)
+        print("[A]/[N]/[C]/[S]/[M]")
+        time.sleep(0.15)
+        print('"A" for make password use numbers, charcters and symbols ((Strong)')
+        time.sleep(0.15)
+        print('"N" for make password only use numbers (Poor)')
+        time.sleep(0.15)
+        print('"C" for make password only use characters (Average)|(better than "N")')
+        time.sleep(0.15)
+        print('"S" for make password only use symbols (Good)|(better than "C")')
+        time.sleep(0.15)
+        print('"M" for make password manually')
+        time.sleep(0.3)
+
+        cond_for_select_mk_passwd = input(">>> ") # user input for choose a method
+
+        # check if user input not in methods of N_Mode
+        while cond_for_select_mk_passwd not in ["A", "a", "N", "n", "C", "c", "S", "s", "M", "m"]:
+            print("Please choose a mode in [A]/[N]/[C]/[S]/[M] modes")
+            cond_for_select_mk_passwd = input(">>> ")
+            if cond_for_select_mk_passwd in ["A", "a", "N", "n", "C", "c", "S", "s", "M", "m"]:
+                break
+
+        # check if user input in ["A", "a", "N", "n", "C", "c", "S", "s"] (and then get length of password)
+        if cond_for_select_mk_passwd in ["A", "a", "N", "n", "C", "c", "S", "s"]:
+            print("Please Enter the length of Password")
+            time.sleep(0.15)
+            print("Please Enter an Int number")
+            time.sleep(0.15)
+            print("Please enter a number grater than 3 and less than 61")
+            time.sleep(0.3)
+            # loop True for get the length of password
+            while True:
+                passwd_len = input(">>> ") # get user input for password length
+                try:
+                    passwd_len = int(passwd_len) # try to convert the passwd_len to integer
+                except:
+                    print("Please Enter an Int number")
+                    time.sleep(0.15)
+
+                if type(passwd_len) == type(0):
+
+                    if passwd_len < 4:
+                        print("Please enter a number grater than 3")
+                        time.sleep(0.15)
+
+                    if passwd_len >= 61:
+                        print("Please enter a number less than 61")
+                        time.sleep(0.15)
+
+                    if passwd_len > 3 and passwd_len < 61:
+                        break
