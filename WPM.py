@@ -73,3 +73,82 @@ if len(user_passwd) == 1: # check if length of user_passwd not equal 0 (be any d
         print("Please enter your password")
         time.sleep(0.3)
         user_passwd_for_login = input(">>> ")
+
+print("")
+time.sleep(0.15)
+print("WELCOME")
+time.sleep(0.15)
+print("")
+
+
+# main loop
+while True:
+
+    # variables for save the all data and refresh that every time
+    saved_passwd = list()
+    saved_passwd_name = list()
+    saved_passwd_value = list()
+
+    # condition for make the folder
+    if os.path.exists(f"{user_workspace_dir}/Documents") == False:
+        os.mkdir(f"{user_workspace_dir}/Documents")
+    if os.path.exists(f"{user_workspace_dir}/Documents/WPM/") == False:
+        os.mkdir(f"{user_workspace_dir}/Documents/WPM/")
+
+    # condition for make or read passwd_data file
+    if "passwd_data" not in os.listdir(f"{user_workspace_dir}/Documents/WPM/"):
+        file_mode = "w"
+    if "passwd_data" in os.listdir(f"{user_workspace_dir}/Documents/WPM/"):
+        file_mode = "r"
+
+    # condition for make or read passwd_user file
+    if "passwd_user" not in os.listdir(f"{user_workspace_dir}/Documents/WPM/"):
+        usr_passwd_file = "w"
+    if "passwd_user" in os.listdir(f"{user_workspace_dir}/Documents/WPM/"):
+        usr_passwd_file = "r"
+
+    # condition for read passwd_data file
+    if file_mode == "r":
+        with open(f"{user_workspace_dir}/Documents/WPM/passwd_data", file_mode) as f:
+            for l in f:
+                l = l.splitlines()
+                for line in l:
+                    enc_data = ced_inh_obj.bin_to_normal(line)
+                    if enc_data not in saved_passwd:
+                        saved_passwd.append(enc_data)
+
+    # condition for make passwd_data file
+    if file_mode == "w":
+        with open(f"{user_workspace_dir}/Documents/WPM/passwd_data", file_mode) as f:
+            pass
+
+    # condition for read passwd_user file
+    if usr_passwd_file == "r":
+        with open(f"{user_workspace_dir}/Documents/WPM/passwd_user", usr_passwd_file) as p_f:
+            for p_l in p_f:
+                p_l = p_l.splitlines()
+                for p_f_l in p_l:
+                    if p_f_l not in user_passwd:
+                        user_passwd.append(p_f_l)
+
+    # condition for make passwd_user file
+    if usr_passwd_file == "w":
+        with open(f"{user_workspace_dir}/Documents/WPM/passwd_user", usr_passwd_file) as p_f:
+            pass
+
+    # iterate on saved_passwd variable and split the name of password and add them to saved_passwd_name variable
+    for data in saved_passwd:
+        if len(data) > 0:
+            name = data.split(":")[0]
+            if name not in saved_passwd_name:
+                saved_passwd_name.append(name)
+
+    # iterate on saved_passwd variable and split the password and add them to saved_passwd_value variable
+    for data in saved_passwd:
+        if len(data) > 0:
+            try:
+                val = data.split(":")[1]
+                if val not in saved_passwd_value:
+                    saved_passwd_value.append(val)
+            except:
+                pass
