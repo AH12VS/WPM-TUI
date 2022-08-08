@@ -44,6 +44,21 @@ if os.path.exists(f"{user_workspace_dir}/Documents/WPM/") == False:
 
 # condition for make or read passwd_user file
 if "passwd_user" not in os.listdir(f"{user_workspace_dir}/Documents/WPM/"):
-    usr_passwd_file = "w" # for make file
+    usr_passwd_file = "w"
 if "passwd_user" in os.listdir(f"{user_workspace_dir}/Documents/WPM/"):
-    usr_passwd_file = "r" # for read file
+    usr_passwd_file = "r"
+
+# condition for read the passwd_user file
+if usr_passwd_file == "r":
+    with open(f"{user_workspace_dir}/Documents/WPM/passwd_user", usr_passwd_file) as p_f:
+        for p_l in p_f:
+            p_l = p_l.splitlines()
+            for p_f_l in p_l:
+                if p_f_l not in user_passwd:
+                    enc_to_normal = ced_inh_obj.bin_to_normal(p_f_l) # encode the data
+                    user_passwd.append(enc_to_normal)
+
+# condition for make passwd_user file
+if usr_passwd_file == "w":
+    with open(f"{user_workspace_dir}/Documents/WPM//passwd_user", usr_passwd_file) as p_f:
+        pass
