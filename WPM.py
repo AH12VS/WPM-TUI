@@ -400,3 +400,10 @@ while True:
 
     if cond_for_work in ["F", "f"]:
         f_mode_functions_obj.f_method(saved_passwd_name, saved_passwd_value)
+
+    if cond_for_work in ["P", "p"]:
+        cond_for_change_passwd = p_mode_functions_obj.p_method(user_passwd, ced_inh_obj, user_workspace_dir)
+        if cond_for_change_passwd in ["N", "n"]:
+            pass
+        if cond_for_change_passwd in ["Y", "y"]:
+            break

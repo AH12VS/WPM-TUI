@@ -268,6 +268,61 @@ class P_Mode():
     def __init__(self):
         pass
 
+    def p_method(self, user_passwd, ced_inh_obj, user_workspace_dir):
+        if len(user_passwd) == 0:
+            print("Please enter your password to set")
+            time.sleep(0.3)
+            self.input_user_passwd = input(">>> ")
+            time.sleep(0.15)
+            print(f"Your password : {self.input_user_passwd} set")
+            time.sleep(0.15)
+            self.code_to_bin_usr_passwd = ced_inh_obj.normal_to_bin(self.input_user_passwd)
+            with open(f"{user_workspace_dir}/Documents/WPM/passwd_user", "w") as f:
+                f.write(self.code_to_bin_usr_passwd)
+                f.write("\n")
+            print("Please start the software again")
+            time.sleep(0.15)
+            print("**********")
+            time.sleep(0.15)
+            print("Have a Nice Day!")
+            time.sleep(1)
+            print("**********")
+            self.cond_for_change_passwd = "Y"
+        if len(user_passwd) > 1:
+            print("Wanna change your password?[N/y]")
+            time.sleep(0.15)
+            try:
+                self.cond_for_change_passwd = input(">>> ")
+            except:
+                self.cond_for_change_passwd = "N"
+
+            if self.cond_for_change_passwd == "Y" or self.cond_for_change_passwd == "y":
+                print("Please enter your password")
+                time.sleep(0.15)
+                self.user_passwd_before_change = input(">>> ")
+
+                if self.user_passwd_before_change == user_passwd[0]:
+                    print("Please enter the new password to set")
+                    time.sleep(0.3)
+                    self.new_user_passwd = input(">>> ")
+                    time.sleep(0.15)
+                    print(f'Your new password "{self.new_user_passwd}" is set')
+                    time.sleep(0.15)
+                    self.code_to_bin_usr_passwd = ced_inh_obj.normal_to_bin(self.new_user_passwd)
+                    with open(f"{user_workspace_dir}/Documents/WPM/passwd_user", "w") as f:
+                        f.write(self.code_to_bin_usr_passwd)
+                        f.write("\n")
+                    print("Please start the software again")
+                    print("**********")
+                    time.sleep(0.15)
+                    print("Have a Nice Day!")
+                    time.sleep(1)
+                    print("**********")
+                if self.user_passwd_before_change != user_passwd[0]:
+                    print(f'The "{self.user_passwd_before_change}" is incorrect')
+        return self.cond_for_change_passwd
+
+
 class R_Mode():
     def __init__(self):
         pass
