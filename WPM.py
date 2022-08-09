@@ -192,7 +192,6 @@ while True:
         print("**********")
 
 
-    # condition for choose N_Mode
     if cond_for_work in ["N", "n"]:
         file_mode = "a"
         print("**************************************************")
@@ -395,3 +394,9 @@ while True:
             code_to_bin = ced_inh_obj.normal_to_bin(f"{input_passwd_name}:{passwd}") # code the password name and password value
             f.write(code_to_bin)
             f.write("\n")
+
+    if cond_for_work in ["A", "a"]:
+        a_mode_functions_obj.a_method(saved_passwd)
+
+    if cond_for_work in ["F", "f"]:
+        f_mode_functions_obj.f_method(saved_passwd_name, saved_passwd_value)

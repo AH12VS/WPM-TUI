@@ -241,6 +241,29 @@ class F_Mode():
     def __init__(self):
         pass
 
+    def f_method(self, saved_passwd_name, saved_passwd_value):
+        print("**************************************************")
+        time.sleep(0.15)
+        print("Please Enter the Name")
+        time.sleep(0.15)
+        print("**********")
+        time.sleep(0.3)
+        self.find_passwd_name = input(">>> ")
+        if self.find_passwd_name in saved_passwd_name:
+            self.name_index = saved_passwd_name.index(self.find_passwd_name)
+            time.sleep(0.15)
+            print("**********")
+            time.sleep(0.15)
+            print("Name:Password")
+            time.sleep(0.15)
+            print("----------")
+            time.sleep(0.15)
+            print(f"{self.find_passwd_name}:{saved_passwd_value[self.name_index]}")
+            print("**********")
+            time.sleep(0.15)
+        if self.find_passwd_name not in saved_passwd_name:
+            print(f'No Item Match for "{self.find_passwd_name}"')
+
 class P_Mode():
     def __init__(self):
         pass
