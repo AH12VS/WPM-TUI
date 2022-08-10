@@ -368,3 +368,70 @@ class R_Mode():
 class E_Mode():
     def __init__(self):
         pass
+
+    def e_method(self, saved_passwd_name, saved_passwd_value, ced_inh_obj, user_workspace_dir):
+        print("**********")
+        time.sleep(0.15)
+        print("Please enter the name of password you want edit that")
+        time.sleep(0.3)
+        self.passwd_name_for_edit = input(">>> ")
+        if self.passwd_name_for_edit not in saved_passwd_name:
+            print("**********")
+            time.sleep(0.15)
+            print(f'"{self.passwd_name_for_edit}" is not in password names')
+            time.sleep(0.15)
+            print("**********")
+            time.sleep(0.15)
+        if self.passwd_name_for_edit in saved_passwd_name:
+            print("**********")
+            time.sleep(0.15)
+            print("Please enter the new password name")
+            time.sleep(0.3)
+            self.new_passwd_name = input(">>> ")
+            while self.new_passwd_name in saved_passwd_name:
+                print("**********")
+                time.sleep(0.15)
+                print("This name is used before")
+                time.sleep(0.15)
+                print("**********")
+                time.sleep(0.15)
+                print("This names are used before : ")
+                time.sleep(0.15)
+                print("**********")
+                time.sleep(0.15)
+                for n in saved_passwd_name:
+                    print(n)
+                    time.sleep(0.15)
+                    print("**********")
+                    time.sleep(0.15)
+                print("**************************************************")
+                time.sleep(0.15)
+                print("Please Enter the Name of Password")
+                time.sleep(0.15)
+                self.new_passwd_name = input(">>> ")
+                time.sleep(0.15)
+                print("**************************************************")
+                time.sleep(0.15)
+                if self.new_passwd_name not in saved_passwd_name:
+                    break
+            self.bin_data_before_change = ced_inh_obj.normal_to_bin(f"{self.passwd_name_for_edit}:{saved_passwd_value[saved_passwd_name.index(self.passwd_name_for_edit)]}")
+            self.bin_data_to_edit = ced_inh_obj.normal_to_bin(f"{self.new_passwd_name}:{saved_passwd_value[saved_passwd_name.index(self.passwd_name_for_edit)]}")
+            print(f"are you sure you want to change {self.passwd_name_for_edit} to {self.new_passwd_name}? [N/y]")
+            time.sleep(0.3)
+            self.cond_for_change_passwd_name = input(">>> ")
+            if self.cond_for_change_passwd_name in ["Y", "y", "N", "n"]:
+                pass
+            else:
+                self.cond_for_change_passwd_name = "N"
+
+            if self.cond_for_change_passwd_name in ["Y", "y"]:
+                fin = open(f"{user_workspace_dir}/Documents/WPM/passwd_data", "rt")
+                self.data = fin.read()
+                fin.close()
+                self.data = self.data.replace(self.bin_data_before_change, self.bin_data_to_edit)
+                fin = open(f"{user_workspace_dir}/Documents/WPM/passwd_data", "wt")
+                fin.write(self.data)
+                fin.close()
+                print(f"New password: {ced_inh_obj.bin_to_normal(self.bin_data_to_edit)}")
+            if self.cond_for_change_passwd_name in ["N", "n"]:
+                pass
