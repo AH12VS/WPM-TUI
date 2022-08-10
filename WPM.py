@@ -430,3 +430,11 @@ while True:
 
     if cond_for_work in ["E", "e"]:
         e_mode_functions_obj.e_method(saved_passwd_name, saved_passwd_value, ced_inh_obj, user_workspace_dir)
+
+    if cond_for_work in ["Q", "q"]:
+        print("**********")
+        time.sleep(0.15)
+        print("Have a Nice Day!")
+        time.sleep(1)
+        print("**********")
+        break
