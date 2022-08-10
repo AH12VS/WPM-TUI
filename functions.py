@@ -327,6 +327,44 @@ class R_Mode():
     def __init__(self):
         pass
 
+    def ra_method(self, user_workspace_dir):
+        print("Are you sure to remove all the data?[N/y]")
+        self.cond_for_remove_all_data = input(">>> ")
+        if self.cond_for_remove_all_data not in ["Y", "y", "N", "n"]:
+            self.cond_for_remove_all_data = "N"
+        if self.cond_for_remove_all_data in ["Y", "y"]:
+            with open(f"{user_workspace_dir}/Documents/WPM/passwd_data", "w") as f:
+                f.write("")
+        if self.cond_for_remove_all_data in ["N", "n"]:
+            pass
+
+    def r_method(self, saved_passwd_name, saved_passwd_value, ced_inh_obj, user_workspace_dir):
+        print("Please enter the Name for remove")
+        time.sleep(0.15)
+        print("**********")
+        time.sleep(0.3)
+        self.find_passwd_name = input(">>> ")
+        if self.find_passwd_name in saved_passwd_name:
+            self.name_index = saved_passwd_name.index(self.find_passwd_name)
+            time.sleep(0.15)
+            print("**********")
+            time.sleep(0.15)
+            print("Are you want to remove this name and password?[N/y]")
+            self.cond_for_remove = input(">>> ")
+            if self.cond_for_remove not in ["Y", "y", "N", "n"]:
+                self.cond_for_remove = "N"
+            if self.cond_for_remove in ["Y", "y"]:
+                with open(f"{user_workspace_dir}/Documents/WPM/passwd_data", "r+") as f_n:
+                    self.new_f = f_n.readlines()
+                    f_n.seek(0)
+                    for line_n in self.new_f:
+                        self.find_bin_passwd = ced_inh_obj.normal_to_bin(f"{self.find_passwd_name}:{saved_passwd_value[self.name_index]}")
+                        if self.find_bin_passwd not in line_n:
+                            f_n.write(line_n)
+                    f_n.truncate()
+        if self.find_passwd_name not in saved_passwd_name:
+            print(f'No Item Match for "{self.find_passwd_name}"')
+
 class E_Mode():
     def __init__(self):
         pass

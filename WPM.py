@@ -407,3 +407,23 @@ while True:
             pass
         if cond_for_change_passwd in ["Y", "y"]:
             break
+
+    if cond_for_work in ["I", "i"]:
+        information.info()
+
+    if cond_for_work in ["R", "r"]:
+        print("**************************************************")
+        time.sleep(0.15)
+        if len(saved_passwd_name) == 0:
+                print("There is no password for remove")
+        if len(saved_passwd_name) > 0:
+            print("Please choose the type: ")
+            time.sleep(0.15)
+            print('[RA]/[R] ("RA" for remove all passwords | "R" for remove a specific password)')
+            cond_for_select_rm_mode = input(">>> ") # get user input for choose a method
+        # condition for remove all data
+        if cond_for_select_rm_mode in ["RA", "Ra", "rA", "ra"]:
+            r_mode_functions_obj.ra_method(user_workspace_dir)
+        # condition for remove any password with name of password
+        if cond_for_select_rm_mode in ["R", "r"]:
+            r_mode_functions_obj.r_method(saved_passwd_name, saved_passwd_value, ced_inh_obj, user_workspace_dir)
