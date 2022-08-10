@@ -38,3 +38,80 @@ class Data_CED():
             "000000000000000000000000000000111", "0000000000000000000000000000000111", "00000000000000000000000000000000111"]
 
         self.split="1001"
+
+    def normal_to_bin(self, normal_val):
+        self.bin_list = list()
+        self.val = str(normal_val)
+        for index in range(len(self.val)):
+
+
+            if self.val[index] in self.normal_num:
+                self.val_index = self.normal_num.index(self.val[index])
+                self.bin_val = self.bin_num[self.val_index]
+                self.bin_list.append(self.bin_val+self.split)
+
+            if self.val[index] in self.normal_lwcs_char:
+                self.val_index = self.normal_lwcs_char.index(self.val[index])
+                self.bin_val = self.bin_lwcs_char[self.val_index]
+                self.bin_list.append(self.bin_val+self.split)
+
+            if self.val[index] in self.normal_upcs_char:
+                self.val_index = self.normal_upcs_char.index(self.val[index])
+                self.bin_val = self.bin_upcs_char[self.val_index]
+                self.bin_list.append(self.bin_val+self.split)
+
+            if self.val[index] in self.normal_sym:
+                self.val_index = self.normal_sym.index(self.val[index])
+                self.bin_val = self.bin_sym[self.val_index]
+                self.bin_list.append(self.bin_val+self.split)
+
+        self.joined_bin = "".join(self.bin_list)
+        return self.joined_bin
+
+    def bin_to_normal(self, joined_bin):
+        self.res_list = list()
+        self.b_list = joined_bin.split("1001")
+
+        for b_val in self.b_list:
+
+            if b_val in self.bin_num:
+                self.b_val_index = self.bin_num.index(b_val)
+                self.normal_val = self.normal_num[self.b_val_index]
+                self.res_list.append(self.normal_val)
+
+            if b_val in self.bin_lwcs_char:
+                self.b_val_index = self.bin_lwcs_char.index(b_val)
+                self.normal_val = self.normal_lwcs_char[self.b_val_index]
+                self.res_list.append(self.normal_val)
+
+            if b_val in self.bin_upcs_char:
+                self.b_val_index = self.bin_upcs_char.index(b_val)
+                self.normal_val = self.normal_upcs_char[self.b_val_index]
+                self.res_list.append(self.normal_val)
+
+            if b_val in self.bin_sym:
+                self.b_val_index = self.bin_sym.index(b_val)
+                self.normal_val = self.normal_sym[self.b_val_index]
+                self.res_list.append(self.normal_val)
+
+        self.res = "".join(self.res_list)
+        return self.res
+
+
+if __name__ == "__main__":
+    while True:
+        commands_list = ["C", "c", "E", "e"]
+        inh_obj = Data_CED()
+        print("select your mode[C/E]")
+        print("C -> Code | E -> Encode")
+        cond_for_select_mode = input(">>> ")
+        if cond_for_select_mode not in commands_list:
+            print(f"The {cond_for_select_mode} is not defiend")
+        if cond_for_select_mode == "C" or cond_for_select_mode == "c":
+            inp_val = input(">>> ")
+            res = inh_obj.normal_to_bin(inp_val)
+            print(res)
+        if cond_for_select_mode == "E" or cond_for_select_mode == "e":
+            inp_val = input(">>> ")
+            res = inh_obj.bin_to_normal(inp_val)
+            print(res)
