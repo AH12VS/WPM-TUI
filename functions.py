@@ -162,22 +162,24 @@ class N_Mode():
 
     def m_method(self, all, saved_passwd_value):
         while True:
-            print("Please enter the password")
+            print(f"|    Please enter the password{51*' '}|")
             time.sleep(0.15)
-            print('Please enter the pasword without using ":" and grater than 3 and less than 61')
+            print(f"|    Please enter the pasword without using \":\"{34*' '}|\n|        and grater than 3 and less than 61{38*' '}|")
             time.sleep(0.3)
-            self.passwd = input(">>> ")
+            self.passwd = input("     >>> ")
             if ":" in self.passwd and len(self.passwd) > 3 and len(self.passwd) < 61:
                 self.recommended_passwd = self.passwd.replace(":", f"{all[random.randint(0, len(all))]}")
                 while self.recommended_passwd in saved_passwd_value:
                     self.recommended_passwd = self.passwd.replace(":", f"{all[random.randint(0, len(all))]}")
                     if self.recommended_passwd not in saved_passwd_value:
                         break
-                print(f'can not save "{self.passwd}" cause ":" is in that')
+                self.free_space_after_self_passwd_1 = 61-len(self.passwd)
+                print(f"|    can not save \"{self.passwd}\"{self.free_space_after_self_passwd_1*' '}|\n|    cause \":\" is in that|{53*' '}")
                 time.sleep(0.15)
-                print(f'Are you want to use "{self.recommended_passwd}" (it is recommended ) ?[y/N]')
+                self.free_space_after_self_recommended_passwd = 70-len(self.recommended_passwd)
+                print(f"|    Are you want to use{57*' '}|\n|        \"{self.recommended_passwd}\"{self.free_space_after_self_recommended_passwd*' '}|\n|            (it is recommended ) ?[y/N]{41*' '}|")
                 time.sleep(0.15)
-                self.cond_for_use_recommended_passwd = input(">>> ")
+                self.cond_for_use_recommended_passwd = input("     >>> ")
                 if self.cond_for_use_recommended_passwd in ["Y", "y", "N", "n"]:
                     pass
                 else:
@@ -190,18 +192,19 @@ class N_Mode():
                     pass
 
             if len(self.passwd) < 4:
-                print("Please enter a password grater than 3")
+                print(f"|    Please enter a password grater than 3{39*' '}|")
                 time.sleep(0.15)
 
             if len(self.passwd) >= 61:
-                print("Please enter a number less than 61")
+                print(f"|    Please enter a number less than 61{42*' '}|")
                 time.sleep(0.15)
 
             if self.passwd in saved_passwd_value:
-                print(f"This password : {self.passwd} is used before")
+                self.free_space_after_self_passwd_2 = 58-len(self.passwd)
+                print(f"|    This password : \"{self.passwd}\"{self.free_space_after_self_passwd_2*' '}|\n|        is used before{58*' '}|")
                 time.sleep(0.15)
-                print("Are you sure you want to use this password [y/N]")
-                cond_for_save_reuse_passwd = input(">>> ")
+                print(f"|    Are you sure you want to use this password [y/N]{28*' '}|")
+                cond_for_save_reuse_passwd = input("     >>> ")
                 if cond_for_save_reuse_passwd in ["Y", "y", "N", "n"]:
                     pass
                 else:
@@ -221,48 +224,52 @@ class A_Mode():
         pass
 
     def a_method(self, saved_passwd):
-        print("**************************************************")
+        print(f"+{80*'-'}+")
         time.sleep(0.15)
-        print("**********")
+        print(f"|{80*'-'}|")
         time.sleep(0.15)
         if len(saved_passwd) == 0:
-            print("There is no password found")
+            print(f"|    There is no password found{50*' '}|")
             time.sleep(0.15)
-            print("**********")
+            print(f"|{80*'-'}|")
             time.sleep(0.15)
         for passwd in saved_passwd:
             if len(passwd) > 0:
-                print(passwd)
+                self.free_space_after_passwd_in_a_mode = 76-len(passwd)
+                print(f"|    {passwd}{self.free_space_after_passwd_in_a_mode*' '}|")
                 time.sleep(0.15)
-                print("**********")
+                print(f"|{80*'-'}|")
                 time.sleep(0.15)
+        print(f"+{80*'-'}+")
 
 class F_Mode():
     def __init__(self):
         pass
 
     def f_method(self, saved_passwd_name, saved_passwd_value):
-        print("**************************************************")
+        print(f"|{80*'-'}|")
         time.sleep(0.15)
-        print("Please Enter the Name")
+        print(f"|    Please Enter the Name{55*' '}|")
         time.sleep(0.15)
-        print("**********")
+        print(f"|{80*'-'}|")
         time.sleep(0.3)
-        self.find_passwd_name = input(">>> ")
+        self.find_passwd_name = input("     >>> ")
         if self.find_passwd_name in saved_passwd_name:
             self.name_index = saved_passwd_name.index(self.find_passwd_name)
             time.sleep(0.15)
-            print("**********")
+            print(f"|{80*'-'}|")
             time.sleep(0.15)
-            print("Name:Password")
+            print(f"|    Name:Password{63*' '}|")
             time.sleep(0.15)
-            print("----------")
+            print(f"|{80*'-'}|")
             time.sleep(0.15)
-            print(f"{self.find_passwd_name}:{saved_passwd_value[self.name_index]}")
-            print("**********")
+            self.free_space_after_name_and_passwd_in_f_mode = 76-(len(self.find_passwd_name)+len(saved_passwd_value[self.name_index]))
+            print(f"|    {self.find_passwd_name}:{saved_passwd_value[self.name_index]}{self.free_space_after_name_and_passwd_in_f_mode*' '}|")
+            print(f"|{80*'-'}|")
             time.sleep(0.15)
         if self.find_passwd_name not in saved_passwd_name:
-            print(f'No Item Match for "{self.find_passwd_name}"')
+            self.free_space_after_finded_passwd_for_show_in_f_mode = 53-len(self.find_passwd_name)
+            print(f"|    No Item Match for \"{self.find_passwd_name}\"{self.free_space_after_finded_passwd_for_show_in_f_mode*' '}|")
 
 class P_Mode():
     def __init__(self):
@@ -270,56 +277,59 @@ class P_Mode():
 
     def p_method(self, user_passwd, ced_inh_obj, user_workspace_dir):
         if len(user_passwd) == 0:
-            print("Please enter your password to set")
+            print(f"|    Please enter your password to set{43*' '}|")
             time.sleep(0.3)
-            self.input_user_passwd = input(">>> ")
+            self.input_user_passwd = input("     >>> ")
             time.sleep(0.15)
-            print(f"Your password : {self.input_user_passwd} set")
+            self.free_space_after_self_input_user_passwd_in_p_mode = 56-len(self.input_user_passwd)
+            print(f"|    Your password : {self.input_user_passwd} set{self.free_space_after_self_input_user_passwd_in_p_mode*' '}|")
             time.sleep(0.15)
             self.code_to_bin_usr_passwd = ced_inh_obj.normal_to_bin(self.input_user_passwd)
             with open(f"{user_workspace_dir}/Documents/WPM/passwd_user", "w") as f:
                 f.write(self.code_to_bin_usr_passwd)
                 f.write("\n")
-            print("Please start the software again")
+            print(f"|    Please start the software again{45*' '}|")
             time.sleep(0.15)
-            print("**********")
+            print(f"|{80*'-'}|")
             time.sleep(0.15)
-            print("Have a Nice Day!")
+            print(f"|    Have a Nice Day!{60*' '}|")
             time.sleep(1)
-            print("**********")
+            print(f"|{80*'-'}|")
             self.cond_for_change_passwd = "Y"
         if len(user_passwd) > 1:
-            print("Wanna change your password?[N/y]")
+            print(f"|    Wanna change your password?[N/y]{44*' '}|")
             time.sleep(0.15)
             try:
-                self.cond_for_change_passwd = input(">>> ")
+                self.cond_for_change_passwd = input("     >>> ")
             except:
                 self.cond_for_change_passwd = "N"
 
             if self.cond_for_change_passwd == "Y" or self.cond_for_change_passwd == "y":
-                print("Please enter your password")
+                print(f"|    Please enter your password{50*' '}")
                 time.sleep(0.15)
-                self.user_passwd_before_change = input(">>> ")
+                self.user_passwd_before_change = input("     >>> ")
 
                 if self.user_passwd_before_change == user_passwd[0]:
-                    print("Please enter the new password to set")
+                    print(f"|    Please enter the new password to set{40*' '}|")
                     time.sleep(0.3)
-                    self.new_user_passwd = input(">>> ")
+                    self.new_user_passwd = input("     >>> ")
                     time.sleep(0.15)
-                    print(f'Your new password "{self.new_user_passwd}" is set')
+                    self.free_space_after_self_new_user_passwd_in_p_mode = 49*' '
+                    print(f"|    Your new password \"{self.new_user_passwd}\" is set")
                     time.sleep(0.15)
                     self.code_to_bin_usr_passwd = ced_inh_obj.normal_to_bin(self.new_user_passwd)
                     with open(f"{user_workspace_dir}/Documents/WPM/passwd_user", "w") as f:
                         f.write(self.code_to_bin_usr_passwd)
                         f.write("\n")
-                    print("Please start the software again")
-                    print("**********")
+                    print(f"|    Please start the software again{45*' '}|")
+                    print(f"|{80*'-'}|")
                     time.sleep(0.15)
-                    print("Have a Nice Day!")
+                    print(f"|    Have a Nice Day!{60*' '}|")
                     time.sleep(1)
-                    print("**********")
+                    print(f"|{80*'-'}|")
                 if self.user_passwd_before_change != user_passwd[0]:
-                    print(f'The "{self.user_passwd_before_change}" is incorrect')
+                    self.free_space_after_self_user_passwd_before_change_in_p_mode = 57-len(self.user_passwd_before_change)
+                    print(f"|    The \"{self.user_passwd_before_change}\" is incorrect{self.free_space_after_self_user_passwd_before_change_in_p_mode*' '}|")
         return self.cond_for_change_passwd
 
 
@@ -329,7 +339,7 @@ class R_Mode():
 
     def ra_method(self, user_workspace_dir):
         print("Are you sure to remove all the data?[N/y]")
-        self.cond_for_remove_all_data = input(">>> ")
+        self.cond_for_remove_all_data = input("     >>> ")
         if self.cond_for_remove_all_data not in ["Y", "y", "N", "n"]:
             self.cond_for_remove_all_data = "N"
         if self.cond_for_remove_all_data in ["Y", "y"]:
@@ -343,14 +353,14 @@ class R_Mode():
         time.sleep(0.15)
         print("**********")
         time.sleep(0.3)
-        self.find_passwd_name = input(">>> ")
+        self.find_passwd_name = input("     >>> ")
         if self.find_passwd_name in saved_passwd_name:
             self.name_index = saved_passwd_name.index(self.find_passwd_name)
             time.sleep(0.15)
             print("**********")
             time.sleep(0.15)
             print("Are you want to remove this name and password?[N/y]")
-            self.cond_for_remove = input(">>> ")
+            self.cond_for_remove = input("     >>> ")
             if self.cond_for_remove not in ["Y", "y", "N", "n"]:
                 self.cond_for_remove = "N"
             if self.cond_for_remove in ["Y", "y"]:
@@ -374,7 +384,7 @@ class E_Mode():
         time.sleep(0.15)
         print("Please enter the name of password you want edit that")
         time.sleep(0.3)
-        self.passwd_name_for_edit = input(">>> ")
+        self.passwd_name_for_edit = input("     >>> ")
         if self.passwd_name_for_edit not in saved_passwd_name:
             print("**********")
             time.sleep(0.15)
@@ -387,7 +397,7 @@ class E_Mode():
             time.sleep(0.15)
             print("Please enter the new password name")
             time.sleep(0.3)
-            self.new_passwd_name = input(">>> ")
+            self.new_passwd_name = input("     >>> ")
             while self.new_passwd_name in saved_passwd_name:
                 print("**********")
                 time.sleep(0.15)
@@ -408,7 +418,7 @@ class E_Mode():
                 time.sleep(0.15)
                 print("Please Enter the Name of Password")
                 time.sleep(0.15)
-                self.new_passwd_name = input(">>> ")
+                self.new_passwd_name = input("     >>> ")
                 time.sleep(0.15)
                 print("**************************************************")
                 time.sleep(0.15)
@@ -418,7 +428,7 @@ class E_Mode():
             self.bin_data_to_edit = ced_inh_obj.normal_to_bin(f"{self.new_passwd_name}:{saved_passwd_value[saved_passwd_name.index(self.passwd_name_for_edit)]}")
             print(f"are you sure you want to change {self.passwd_name_for_edit} to {self.new_passwd_name}? [N/y]")
             time.sleep(0.3)
-            self.cond_for_change_passwd_name = input(">>> ")
+            self.cond_for_change_passwd_name = input("     >>> ")
             if self.cond_for_change_passwd_name in ["Y", "y", "N", "n"]:
                 pass
             else:
