@@ -408,14 +408,22 @@ while True:
         a_mode_functions_obj.a_method(saved_passwd)
 
     if cond_for_work in ["F", "f"]:
+        print(f"+{80*'-'}+")
+        time.sleep(0.3)
         f_mode_functions_obj.f_method(saved_passwd_name, saved_passwd_value)
+        print(f"+{80*'-'}+")
+        time.sleep(0.3)
 
     if cond_for_work in ["P", "p"]:
+        print(f"+{80*'-'}+")
+        time.sleep(0.3)
         cond_for_change_passwd = p_mode_functions_obj.p_method(user_passwd, ced_inh_obj, user_workspace_dir)
         if cond_for_change_passwd in ["N", "n"]:
             pass
         if cond_for_change_passwd in ["Y", "y"]:
             break
+        print(f"+{80*'-'}+")
+        time.sleep(0.3)
 
     if cond_for_work in ["I", "i"]:
         information.info()
@@ -436,9 +444,18 @@ while True:
         # condition for remove any password with name of password
         if cond_for_select_rm_mode in ["R", "r"]:
             r_mode_functions_obj.r_method(saved_passwd_name, saved_passwd_value, ced_inh_obj, user_workspace_dir)
+        print(f"+{80*'-'}+")
+        time.sleep(0.3)
 
     if cond_for_work in ["E", "e"]:
+        print(f"+{80*'-'}+")
+        time.sleep(0.3)
         e_mode_functions_obj.e_method(saved_passwd_name, saved_passwd_value, ced_inh_obj, user_workspace_dir)
+        print(f"+{80*'-'}+")
+        time.sleep(0.3)
+
+    if cond_for_work in ["H", "h"]:
+        help.help()
 
     if cond_for_work in ["Q", "q"]:
         print(f"+{80*'-'}+")
