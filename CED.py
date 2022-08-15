@@ -99,19 +99,27 @@ class Data_CED():
 
 
 if __name__ == "__main__":
+    import time
     while True:
         commands_list = ["C", "c", "E", "e"]
         inh_obj = Data_CED()
-        print("select your mode[C/E]")
-        print("C -> Code | E -> Encode")
-        cond_for_select_mode = input(">>> ")
+        print(f"+{80*'-'}+")
+        time.sleep(0.3)
+        print(f"|    select your mode[C/E]{55*' '}|")
+        print(f"|    C -> Code | E -> Encode{53*' '}|")
+        cond_for_select_mode = input("     >>> ")
         if cond_for_select_mode not in commands_list:
-            print(f"The {cond_for_select_mode} is not defiend")
+            free_space_after_cond_for_select_work = 57-len(cond_for_select_mode)
+            print(f"|    The {cond_for_select_mode} is not defiend{free_space_after_cond_for_select_work*' '}|")
         if cond_for_select_mode == "C" or cond_for_select_mode == "c":
-            inp_val = input(">>> ")
+            inp_val = input("     >>> ")
             res = inh_obj.normal_to_bin(inp_val)
-            print(res)
+            len_res = 76-len(res)
+            print(f"|    {res}{len_res*' '}|")
         if cond_for_select_mode == "E" or cond_for_select_mode == "e":
-            inp_val = input(">>> ")
+            inp_val = input("     >>> ")
             res = inh_obj.bin_to_normal(inp_val)
-            print(res)
+            len_res = 76-len(res)
+            print(f"|    {res}{len_res*' '}|")
+        print(f"+{80*'-'}+")
+        time.sleep(0.3)

@@ -64,25 +64,39 @@ if usr_passwd_file == "w":
         pass
 
 if len(user_passwd) == 1: # check if length of user_passwd not equal 0 (be any data in that)
-    print("Please enter your password")
+    print(f"+{80*'-'}+")
     time.sleep(0.3)
-    user_passwd_for_login = input(">>> ") # get the input of user for open the software
+    print(f"|    Please enter your password{50*' '}|")
+    time.sleep(0.3)
+    user_passwd_for_login = input("     >>> ") # get the input of user for open the software
     while user_passwd_for_login != user_passwd[0]: # loop work if user input not equal the real and true password
-        print(f'The "{user_passwd_for_login} is incorrect"')
+        free_space_after_user_passwd_for_login = 59-len(user_passwd_for_login)
+        print(f"|    The {user_passwd_for_login} is incorrect{free_space_after_user_passwd_for_login*' '}|")
         time.sleep(0.15)
-        print("Please enter your password")
+        print(f"|    Please enter your password{50*' '}|")
         time.sleep(0.3)
-        user_passwd_for_login = input(">>> ")
+        user_passwd_for_login = input("     >>> ")
 
-print("")
-time.sleep(0.15)
-print("WELCOME")
-time.sleep(0.15)
-print("")
+print(f"+{80*'-'}+")
+time.sleep(0.3)
 
+print(f"+{80*'-'}+")
+time.sleep(0.3)
+
+print(f"|{80*' '}|")
+time.sleep(0.15)
+print(f"|    WELCOME{69*' '}|")
+time.sleep(0.15)
+print(f"|{80*' '}|")
+
+print(f"+{80*'-'}+")
+time.sleep(0.3)
 
 # main loop
 while True:
+
+    print(f"+{80*'-'}+")
+    time.sleep(0.3)
 
     # variables for save the all data and refresh that every time
     saved_passwd = list()
@@ -153,80 +167,71 @@ while True:
             except:
                 pass
 
-
     # show the modes
-    print("**************************************************")
+    print(f"|    [N] Input New Password{54*' '}|")
     time.sleep(0.15)
-    print("[N] Input New Password")
+    print(f"|    [A] Show All Passwords{54*' '}|")
     time.sleep(0.15)
-    print("[A] Show All Passwords")
+    print(f"|    [F] Find Password{59*' '}|")
     time.sleep(0.15)
-    print("[F] Find Password")
+    print(f"|    [P] Set Password{60*' '}|")
     time.sleep(0.15)
-    print("[P] Set Password")
+    print(f"|    [I] Information{61*' '}|")
     time.sleep(0.15)
-    print("[I] Information")
+    print(f"|    [R] Remove{66*' '}|")
     time.sleep(0.15)
-    print("[R] Remove")
+    print(f"|    [E] Edit{68*' '}|")
     time.sleep(0.15)
-    print("[E] Edit")
+    print(f"|    [H] Help{68*' '}|")
     time.sleep(0.15)
-    print("[H] Help")
+    print(f"|    [Q] Quit{68*' '}|")
     time.sleep(0.15)
-    print("[Q] Quit")
-    time.sleep(0.15)
-    time.sleep(0.3)
 
-    cond_for_work = input(">>> ") # get input for choose a mode
+    cond_for_work = input("     >>> ") # get input for choose a mode
 
     # if user input a undefined  command
     if cond_for_work not in commands_list:
-        print("**********")
+        free_space_after_cond_for_work = 54-len(cond_for_work)
+        print(f"|    There is no \"{cond_for_work}\" command{free_space_after_cond_for_work*' '}|")
         time.sleep(0.15)
-        print(f'There is no "{cond_for_work}" command.')
-        time.sleep(0.15)
-        print("**********")
-        time.sleep(0.15)
-        print("You can use This commands:")
-        time.sleep(0.15)
-        print("**********")
 
+        print("|    You can use This commands:                                                  |")
+        time.sleep(0.15)
+
+    print(f"+{80*'-'}+")
+    time.sleep(0.3)
 
     if cond_for_work in ["N", "n"]:
         file_mode = "a"
-        print("**************************************************")
+
+        print(f"+{80*'-'}+")
+        time.sleep(0.3)
+
+        print(f"|    Please Enter the Name of Password{43*' '}|")
         time.sleep(0.15)
-        print("Please Enter the Name of Password")
-        time.sleep(0.15)
-        input_passwd_name = input(">>> ") # get name of password name of user
-        time.sleep(0.15)
-        print("**************************************************")
+        input_passwd_name = input("     >>> ") # get name of password name of user
         time.sleep(0.15)
         # check if user input name in saved_passwd_name
         while input_passwd_name in saved_passwd_name :
-            print("**********")
+
+            print(f"|    This name is used before{52*' '}|")
             time.sleep(0.15)
-            print("This name is used before")
+            print(f"|    This names are used before :{48*' '}|")
             time.sleep(0.15)
-            print("**********")
-            time.sleep(0.15)
-            print("This names are used before : ")
-            time.sleep(0.15)
-            print("**********")
-            time.sleep(0.15)
+            print(f"|{80*'-'}|")
             # loop to show the all password names
             for n in saved_passwd_name:
-                print(n)
+                free_space_after_name = 76-len(n)
+                print(f"|    {n}{free_space_after_name*' '}|")
                 time.sleep(0.15)
-                print("**********")
-                time.sleep(0.15)
-            print("**************************************************")
+                print(f"|{80*'-'}|")
+            print(f"|{80*' '}|")
             time.sleep(0.15)
-            print("Please Enter the Name of Password")
+            print(f"|    Please Enter the Name of Password{43*' '}|")
             time.sleep(0.15)
-            input_passwd_name = input(">>> ") # get the user input for new name for the password
+            input_passwd_name = input("     >>> ") # get the user input for new name for the password
             time.sleep(0.15)
-            print("**************************************************")
+            print(f"|{80*' '}|")
             time.sleep(0.15)
             # check (for break the loop)
             if input_passwd_name not in saved_passwd_name:
@@ -234,34 +239,35 @@ while True:
 
         # check if ":" in user input name of password do not use that
         while ":" in input_passwd_name:
-            print('Please enter the password name without ":"')
+            print(f"|    Please enter the password name without \":\"{34*' '}|")
             time.sleep(0.15)
-            input_passwd_name = input(">>> ") # get user input again for name of password
+            input_passwd_name = input("     >>> ") # get user input again for name of password
             # check if user input name in saved_passwd_name
             while input_passwd_name in saved_passwd_name :
-                print("**********")
+                print(f"|{80*' '}|")
                 time.sleep(0.15)
-                print("This name is used before")
+                print(f"|    This name is used before{52*' '}|")
                 time.sleep(0.15)
-                print("**********")
+                print(f"|{80*' '}|")
                 time.sleep(0.15)
-                print("This names are used before : ")
+                print(f"|    This names are used before : {47*' '}|")
                 time.sleep(0.15)
-                print("**********")
+                print(f"|{80*' '}|")
                 time.sleep(0.15)
+                print(f"|{80*'-'}|")
                 # loop to show the all password names
                 for n in saved_passwd_name:
-                    print(n)
+                    free_space_after_name = 76-len(n)
+                    print(f"|    {n}{free_space_after_name*' '}|")
                     time.sleep(0.15)
-                    print("**********")
-                    time.sleep(0.15)
-                print("**************************************************")
+                    print(f"|{80*'-'}|")
+                print(f"|{80*'-'}|")
                 time.sleep(0.15)
-                print("Please Enter the Name of Password")
+                print(f"|    Please Enter the Name of Password{43*' '}|")
                 time.sleep(0.15)
-                input_passwd_name = input(">>> ") # get the user input for new name for the password
+                input_passwd_name = input("     >>> ") # get the user input for new name for the password
                 time.sleep(0.15)
-                print("**************************************************")
+                print(f"|{80*'-'}|")
                 time.sleep(0.15)
                 # check for break the loop
                 if input_passwd_name not in saved_passwd_name:
@@ -272,39 +278,39 @@ while True:
 
         # check if length of user input name be equal 0
         while len(input_passwd_name) == 0:
-            print("The password name can not be empty")
+            print(f"|    The password name can not be empty{42*' '}|")
             time.sleep(0.15)
-            input_passwd_name = input(">>> ") # get passwod again
+            input_passwd_name = input("     >>> ") # get passwod again
             # check if ":" in user input name of password do not use that
             while ":" in input_passwd_name:
-                print('Please enter the password name without ":"')
+                print(f"|    Please enter the password name without \":\"{32*' '}")
                 time.sleep(0.15)
-                input_passwd_name = input(">>> ") # get user input again for name of password
+                input_passwd_name = input("     >>> ") # get user input again for name of password
                 # check if user input name in saved_passwd_name
                 while input_passwd_name in saved_passwd_name :
-                    print("**********")
+                    print(f"|{80*'-'}|")
                     time.sleep(0.15)
-                    print("This name is used before")
+                    print(f"|    This name is used before{52*' '}|")
                     time.sleep(0.15)
-                    print("**********")
+                    print(f"|{80*'-'}|")
                     time.sleep(0.15)
-                    print("This names are used before : ")
+                    print(f"|    This names are used before : {47*' '}|")
                     time.sleep(0.15)
-                    print("**********")
+                    print(f"|{80*'-'}|")
                     time.sleep(0.15)
                     # loop to show the all password names
                     for n in saved_passwd_name:
                         print(n)
                         time.sleep(0.15)
-                        print("**********")
+                        print(f"|{80*'-'}|")
                         time.sleep(0.15)
-                    print("**************************************************")
+                    print(f"|{80*'-'}|")
                     time.sleep(0.15)
-                    print("Please Enter the Name of Password")
+                    print(f"|    Please Enter the Name of Password{43*' '}|")
                     time.sleep(0.15)
-                    input_passwd_name = input(">>> ")  # get the user input for new name for the password
+                    input_passwd_name = input("     >>> ")  # get the user input for new name for the password
                     time.sleep(0.15)
-                    print("**************************************************")
+                    print(f"|{80*'-'}|")
                     time.sleep(0.15)
                     # check (for break the loop)
                     if input_passwd_name not in saved_passwd_name:
@@ -318,55 +324,55 @@ while True:
 
         # show the methods of N_Mode
         time.sleep(0.15)
-        print("Please select mode (default : A):")
+        print(f"|    Please select mode (default : A):{43*' '}|")
         time.sleep(0.15)
-        print("[A]/[N]/[C]/[S]/[M]")
+        print(f"|    [A]/[N]/[C]/[S]/[M]{57*' '}|")
         time.sleep(0.15)
-        print('"A" for make password use numbers, charcters and symbols ((Strong)')
+        print(f"|    \"A\" for make password use numbers, charcters and symbols ((Strong){10*' '}|")
         time.sleep(0.15)
-        print('"N" for make password only use numbers (Poor)')
+        print(f"|    \"N\" for make password only use numbers (Poor){31*' '}|")
         time.sleep(0.15)
-        print('"C" for make password only use characters (Average)|(better than "N")')
+        print(f"|    \"C\" for make password only use characters (Average)|(better than \"N\"){7*' '}|")
         time.sleep(0.15)
-        print('"S" for make password only use symbols (Good)|(better than "C")')
+        print(f"|    \"S\" for make password only use symbols (Good)|(better than \"C\"){13*' '}|")
         time.sleep(0.15)
-        print('"M" for make password manually')
+        print(f"|    \"M\" for make password manually{46*' '}|")
         time.sleep(0.3)
 
-        cond_for_select_mk_passwd = input(">>> ") # user input for choose a method
+        cond_for_select_mk_passwd = input("     >>> ") # user input for choose a method
 
         # check if user input not in methods of N_Mode
         while cond_for_select_mk_passwd not in ["A", "a", "N", "n", "C", "c", "S", "s", "M", "m"]:
-            print("Please choose a mode in [A]/[N]/[C]/[S]/[M] modes")
-            cond_for_select_mk_passwd = input(">>> ")
+            print(f"|    Please choose a mode in [A]/[N]/[C]/[S]/[M] modes{27*' '}|")
+            cond_for_select_mk_passwd = input("     >>> ")
             if cond_for_select_mk_passwd in ["A", "a", "N", "n", "C", "c", "S", "s", "M", "m"]:
                 break
 
         # check if user input in ["A", "a", "N", "n", "C", "c", "S", "s"] (and then get length of password)
         if cond_for_select_mk_passwd in ["A", "a", "N", "n", "C", "c", "S", "s"]:
-            print("Please Enter the length of Password")
+            print(f"|    Please Enter the length of Password{41*' '}|")
             time.sleep(0.15)
-            print("Please Enter an Int number")
+            print(f"|    Please Enter an Int number{50*' '}|")
             time.sleep(0.15)
-            print("Please enter a number grater than 3 and less than 61")
+            print(f"|    Please enter a number grater than 3 and less than 61{24*' '}|")
             time.sleep(0.3)
             # loop True for get the length of password
             while True:
-                passwd_len = input(">>> ") # get user input for password length
+                passwd_len = input("     >>> ") # get user input for password length
                 try:
                     passwd_len = int(passwd_len) # try to convert the passwd_len to integer
                 except:
-                    print("Please Enter an Int number")
+                    print(f"|    Please Enter an Int number{50*' '}|")
                     time.sleep(0.15)
 
                 if type(passwd_len) == type(0):
 
                     if passwd_len < 4:
-                        print("Please enter a number grater than 3")
+                        print(f"|    Please enter a number grater than 3{41*' '}|")
                         time.sleep(0.15)
 
                     if passwd_len >= 61:
-                        print("Please enter a number less than 61")
+                        print(f"|    Please enter a number less than 61{42*' '}|")
                         time.sleep(0.15)
 
                     if passwd_len > 3 and passwd_len < 61:
@@ -387,7 +393,10 @@ while True:
         if cond_for_select_mk_passwd in ["M", "m"]:
             passwd = n_mode_functions_obj.m_method(all, saved_passwd_value)
 
-        print(f"{input_passwd_name}:{passwd}") # show the name of password and password
+        free_space_after_passwd_for_print = 75-(len(input_passwd_name)+len(passwd))
+        print(f"|    {input_passwd_name}:{passwd}{free_space_after_passwd_for_print*' '}|") # show the name of password and password
+        time.sleep(0.3)
+        print(f"+{80*'-'}+")
 
         # save the file
         with open(f"{user_workspace_dir}/Documents/WPM/passwd_data", file_mode) as f:
@@ -412,15 +421,15 @@ while True:
         information.info()
 
     if cond_for_work in ["R", "r"]:
-        print("**************************************************")
+        print(f"+{80*'-'}+")
         time.sleep(0.15)
         if len(saved_passwd_name) == 0:
-                print("There is no password for remove")
+                print(f"|    There is no password for remove{45*' '}|")
         if len(saved_passwd_name) > 0:
-            print("Please choose the type: ")
+            print(f"|    Please choose the type: {52*' '}")
             time.sleep(0.15)
-            print('[RA]/[R] ("RA" for remove all passwords | "R" for remove a specific password)')
-            cond_for_select_rm_mode = input(">>> ") # get user input for choose a method
+            print(f"|    [RA]/[R] (\"RA\" for remove all passwords | \"R\" for remove{20*' '}|\n|    a specific password){52*' '}|")
+            cond_for_select_rm_mode = input("     >>> ") # get user input for choose a method
         # condition for remove all data
         if cond_for_select_rm_mode in ["RA", "Ra", "rA", "ra"]:
             r_mode_functions_obj.ra_method(user_workspace_dir)
@@ -432,9 +441,9 @@ while True:
         e_mode_functions_obj.e_method(saved_passwd_name, saved_passwd_value, ced_inh_obj, user_workspace_dir)
 
     if cond_for_work in ["Q", "q"]:
-        print("**********")
+        print(f"+{80*'-'}+")
         time.sleep(0.15)
-        print("Have a Nice Day!")
+        print(f"|    Have a Nice Day!{60*' '}|")
         time.sleep(1)
-        print("**********")
+        print(f"+{80*'-'}+")
         break
