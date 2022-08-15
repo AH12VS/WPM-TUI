@@ -263,12 +263,12 @@ class F_Mode():
             time.sleep(0.15)
             print(f"|{80*'-'}|")
             time.sleep(0.15)
-            self.free_space_after_name_and_passwd_in_f_mode = 76-(len(self.find_passwd_name)+len(saved_passwd_value[self.name_index]))
+            self.free_space_after_name_and_passwd_in_f_mode = 75-(len(self.find_passwd_name)+len(saved_passwd_value[self.name_index]))
             print(f"|    {self.find_passwd_name}:{saved_passwd_value[self.name_index]}{self.free_space_after_name_and_passwd_in_f_mode*' '}|")
             print(f"|{80*'-'}|")
             time.sleep(0.15)
         if self.find_passwd_name not in saved_passwd_name:
-            self.free_space_after_finded_passwd_for_show_in_f_mode = 53-len(self.find_passwd_name)
+            self.free_space_after_finded_passwd_for_show_in_f_mode = 56-len(self.find_passwd_name)
             print(f"|    No Item Match for \"{self.find_passwd_name}\"{self.free_space_after_finded_passwd_for_show_in_f_mode*' '}|")
 
 class P_Mode():
@@ -338,7 +338,7 @@ class R_Mode():
         pass
 
     def ra_method(self, user_workspace_dir):
-        print("Are you sure to remove all the data?[N/y]")
+        print(f"|    Are you sure to remove all the data?[N/y]{35*' '}|")
         self.cond_for_remove_all_data = input("     >>> ")
         if self.cond_for_remove_all_data not in ["Y", "y", "N", "n"]:
             self.cond_for_remove_all_data = "N"
@@ -349,17 +349,17 @@ class R_Mode():
             pass
 
     def r_method(self, saved_passwd_name, saved_passwd_value, ced_inh_obj, user_workspace_dir):
-        print("Please enter the Name for remove")
+        print(f"|    Please enter the Name for remove{44*' '}|")
         time.sleep(0.15)
-        print("**********")
+        print(f"|{80*'-'}|")
         time.sleep(0.3)
         self.find_passwd_name = input("     >>> ")
         if self.find_passwd_name in saved_passwd_name:
             self.name_index = saved_passwd_name.index(self.find_passwd_name)
             time.sleep(0.15)
-            print("**********")
+            print(f"|{80*'-'}|")
             time.sleep(0.15)
-            print("Are you want to remove this name and password?[N/y]")
+            print(f"|    Are you want to remove this name and password?[N/y]{25*' '}|")
             self.cond_for_remove = input("     >>> ")
             if self.cond_for_remove not in ["Y", "y", "N", "n"]:
                 self.cond_for_remove = "N"
@@ -373,60 +373,65 @@ class R_Mode():
                             f_n.write(line_n)
                     f_n.truncate()
         if self.find_passwd_name not in saved_passwd_name:
-            print(f'No Item Match for "{self.find_passwd_name}"')
+            self.free_space_after_self_find_passwd_name_in_r_mode = 56-len(self.find_passwd_name)
+            print(f"|    No Item Match for \"{self.find_passwd_name}\"{self.free_space_after_self_find_passwd_name_in_r_mode*' '}|")
 
 class E_Mode():
     def __init__(self):
         pass
 
     def e_method(self, saved_passwd_name, saved_passwd_value, ced_inh_obj, user_workspace_dir):
-        print("**********")
+        print(f"|{80*'-'}|")
         time.sleep(0.15)
-        print("Please enter the name of password you want edit that")
+        print(f"|    Please enter the name of password you want edit that{24*' '}|")
         time.sleep(0.3)
         self.passwd_name_for_edit = input("     >>> ")
         if self.passwd_name_for_edit not in saved_passwd_name:
-            print("**********")
+            print(f"|{80*'-'}|")
             time.sleep(0.15)
-            print(f'"{self.passwd_name_for_edit}" is not in password names')
+            self.free_space_after_self_passwd_name_for_edit_in_e_mode = 49-len(self.passwd_name_for_edit)
+            print(f"|    \"{self.passwd_name_for_edit}\" is not in password names{self.free_space_after_self_passwd_name_for_edit_in_e_mode*' '}|")
             time.sleep(0.15)
-            print("**********")
+            print(f"|{80*'-'}|")
             time.sleep(0.15)
         if self.passwd_name_for_edit in saved_passwd_name:
-            print("**********")
+            print(f"|{80*'-'}|")
             time.sleep(0.15)
-            print("Please enter the new password name")
+            print(f"|    Please enter the new password name{42*' '}|")
             time.sleep(0.3)
             self.new_passwd_name = input("     >>> ")
             while self.new_passwd_name in saved_passwd_name:
-                print("**********")
+                print(f"|{80*'-'}|")
                 time.sleep(0.15)
-                print("This name is used before")
+                print(f"|    This name is used before{52*' '}|")
                 time.sleep(0.15)
-                print("**********")
+                print(f"|{80*'-'}|")
                 time.sleep(0.15)
-                print("This names are used before : ")
+                print(f"|    This names are used before : {47*' '}|")
                 time.sleep(0.15)
-                print("**********")
+                print(f"|{80*'-'}|")
                 time.sleep(0.15)
                 for n in saved_passwd_name:
-                    print(n)
+                    self.free_space_after_n_in_e_mode = 76-len(n)
+                    print(f"|    {n}{self.free_space_after_n_in_e_mode*' '}|")
                     time.sleep(0.15)
-                    print("**********")
+                    print(f"|{80*'-'}|")
                     time.sleep(0.15)
-                print("**************************************************")
+                print(f"|{80*'-'}|")
                 time.sleep(0.15)
-                print("Please Enter the Name of Password")
+                print(f"|    Please Enter the Name of Password{43*' '}|")
                 time.sleep(0.15)
                 self.new_passwd_name = input("     >>> ")
                 time.sleep(0.15)
-                print("**************************************************")
+                print(f"|{80*'-'}|")
                 time.sleep(0.15)
                 if self.new_passwd_name not in saved_passwd_name:
                     break
             self.bin_data_before_change = ced_inh_obj.normal_to_bin(f"{self.passwd_name_for_edit}:{saved_passwd_value[saved_passwd_name.index(self.passwd_name_for_edit)]}")
             self.bin_data_to_edit = ced_inh_obj.normal_to_bin(f"{self.new_passwd_name}:{saved_passwd_value[saved_passwd_name.index(self.passwd_name_for_edit)]}")
-            print(f"are you sure you want to change {self.passwd_name_for_edit} to {self.new_passwd_name}? [N/y]")
+            self.free_space_after_self_passwd_name_for_edit_in_e_mode = 44-len(self.passwd_name_for_edit)
+            self.free_space_after_self_new_passwd_name_in_e_mode = 61-len(self.new_passwd_name)
+            print(f"|    are you sure you want to change {self.passwd_name_for_edit}{self.free_space_after_self_passwd_name_for_edit_in_e_mode*' '}|\n|        to{70*' '}|\n|            {self.new_passwd_name}? [N/y]{self.free_space_after_self_new_passwd_name_in_e_mode*' '}|")
             time.sleep(0.3)
             self.cond_for_change_passwd_name = input("     >>> ")
             if self.cond_for_change_passwd_name in ["Y", "y", "N", "n"]:
@@ -442,6 +447,7 @@ class E_Mode():
                 fin = open(f"{user_workspace_dir}/Documents/WPM/passwd_data", "wt")
                 fin.write(self.data)
                 fin.close()
-                print(f"New password: {ced_inh_obj.bin_to_normal(self.bin_data_to_edit)}")
+                self.free_space_after_self_bin_data_to_edit_in_e_mode = 62-len(ced_inh_obj.bin_to_normal(self.bin_data_to_edit))
+                print(f"|    New password: {ced_inh_obj.bin_to_normal(self.bin_data_to_edit)}{self.free_space_after_self_bin_data_to_edit_in_e_mode*' '}|")
             if self.cond_for_change_passwd_name in ["N", "n"]:
                 pass
