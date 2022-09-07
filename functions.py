@@ -317,7 +317,6 @@ class P_Mode():
                 self.input_user_passwd)
             with open(f"{user_workspace_dir}/Documents/WPM/passwd_user", "w") as f:
                 f.write(self.code_to_bin_usr_passwd)
-                f.write("\n")
             print(f"|    Please start the software again{45*' '}|")
             time.sleep(0.15)
             print(f"|{80*'-'}|")
