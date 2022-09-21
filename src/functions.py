@@ -8,110 +8,30 @@ class N_Mode():
         pass
 
     def a_method(self, all, passwd_len, saved_passwd_value):
-        if passwd_len < 61:
-            self.temp = random.sample(all, passwd_len)
-            self.passwd = "".join(self.temp)
-            while self.passwd in saved_passwd_value:
-                self.temp = random.sample(all, passwd_len)
-                self.passwd = "".join(self.temp)
-                if self.passwd not in saved_passwd_value:
-                    self.passwd = self.passwd
-                else:
-                    self.temp = random.sample(all, passwd_len)
-                    self.passwd = "".join(self.temp)
+        self.passwd = random.sample(all, passwd_len)
+        self.passwd = "".join(self.passwd)
+        
+        while self.passwd in saved_passwd_value:
+            self.passwd = random.sample(all, passwd_len)
+            self.passwd = "".join(self.passwd)
+
         return self.passwd
 
     def n_method(self, numbers, passwd_len, saved_passwd_value):
-        if passwd_len < 11:
-            self.temp = random.sample(numbers, passwd_len)
-            self.passwd = "".join(self.temp)
-            while self.passwd in saved_passwd_value:
-                self.temp = random.sample(numbers, passwd_len)
-                self.passwd = "".join(self.temp)
-                if self.passwd not in saved_passwd_value:
-                    self.passwd = self.passwd
-                else:
-                    self.temp = random.sample(numbers, passwd_len)
-                    self.passwd = "".join(self.temp)
-
-        if passwd_len > 10:
-
-            if passwd_len < 21:
-                more_passwd_len = passwd_len-10
-                self.temp_1 = random.sample(numbers, 10)
-                self.passwd_1 = "".join(self.temp_1)
-
-                self.temp_2 = random.sample(numbers, more_passwd_len)
-                self.passwd_2 = "".join(self.temp_2)
-                self.passwd = self.passwd_1+self.passwd_2
-
-            if passwd_len > 20 and passwd_len < 31:
-                more_passwd_len = passwd_len-20
-                self.temp_1 = random.sample(numbers, 10)
-                self.passwd_1 = "".join(self.temp_1)
-
-                self.temp_2 = random.sample(numbers, 10)
-                self.passwd_2 = "".join(self.temp_2)
-                self.temp_3 = random.sample(numbers, more_passwd_len)
-                self.passwd_3 = "".join(self.temp_3)
-
-                self.passwd = self.passwd_1+self.passwd_2+self.passwd_3
-
-            if passwd_len > 30 and passwd_len < 41:
-                more_passwd_len = passwd_len-30
-                self.temp_1 = random.sample(numbers, 10)
-                self.passwd_1 = "".join(self.temp_1)
-
-                self.temp_2 = random.sample(numbers, 10)
-                self.passwd_2 = "".join(self.temp_2)
-                self.temp_3 = random.sample(numbers, 10)
-                self.passwd_3 = "".join(self.temp_3)
-
-                self.temp_4 = random.sample(numbers, more_passwd_len)
-                self.passwd_4 = "".join(self.temp_4)
-
-                self.passwd = self.passwd_1+self.passwd_2+self.passwd_3+self.passwd_4
-
-            if passwd_len > 40 and passwd_len < 51:
-                more_passwd_len = passwd_len-40
-                self.temp_1 = random.sample(numbers, 10)
-                self.passwd_1 = "".join(self.temp_1)
-
-                self.temp_2 = random.sample(numbers, 10)
-                self.passwd_2 = "".join(self.temp_2)
-                self.temp_3 = random.sample(numbers, 10)
-                self.passwd_3 = "".join(self.temp_3)
-
-                self.temp_4 = random.sample(numbers, 10)
-                self.passwd_4 = "".join(self.temp_4)
-
-                self.temp_5 = random.sample(numbers, 10)
-                self.passwd_5 = "".join(self.temp_5)
-
-                self.passwd = self.passwd_1+self.passwd_2 + \
-                    self.passwd_3+self.passwd_4+self.passwd_5
-
-            if passwd_len > 50 and passwd_len < 61:
-                more_passwd_len = passwd_len-50
-                self.temp_1 = random.sample(numbers, 10)
-                self.passwd_1 = "".join(self.temp_1)
-
-                self.temp_2 = random.sample(numbers, 10)
-                self.passwd_2 = "".join(self.temp_2)
-                self.temp_3 = random.sample(numbers, 10)
-                self.passwd_3 = "".join(self.temp_3)
-
-                self.temp_4 = random.sample(numbers, 10)
-                self.passwd_4 = "".join(self.temp_4)
-
-                self.temp_5 = random.sample(numbers, 10)
-                self.passwd_5 = "".join(self.temp_5)
-
-                self.temp_6 = random.sample(numbers, more_passwd_len)
-                self.passwd_6 = "".join(self.temp_6)
-
-                self.passwd = self.passwd_1+self.passwd_2+self.passwd_3 + \
-                    self.passwd_4+self.passwd_5+self.passwd_6
+        self.passwd = list()
+        while passwd_len > 10:
+            self.passwd += random.sample(numbers, 10)
+            passwd_len -= 10
+        self.passwd += random.sample(numbers, passwd_len)
+        self.passwd = "".join(self.passwd)
+        
+        while self.passwd in saved_passwd_value:
+            self.passwd = list()
+            while passwd_len > 10:
+                self.passwd += random.sample(numbers, 10)
+                passwd_len -= 10
+            self.passwd += random.sample(numbers, passwd_len)
+            self.passwd = "".join(self.passwd)
 
         return self.passwd
 
@@ -161,7 +81,7 @@ class N_Mode():
             self.passwd = self.passwd_1+self.passwd_2
 
         return self.passwd
-
+        
     def m_method(self, all, saved_passwd_value):
         while True:
             print(f"|    Please enter the password{51*' '}|")
